@@ -1,0 +1,28 @@
+.header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+  
+    nav {
+      display: flex;
+      justify-content: center;
+  
+      ul {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+  
+        li {
+          a {
+            color: white;
+            font-weight: bold;
+  
+            &:hover {
+              color: #ddd;
+            }
+          }
+        }
+      }
+    }
+  }
+  
