@@ -1,11 +1,12 @@
 import React from 'react';
 import './DiamondPackage.scss';
+import { FaHotel, FaPlane, FaUtensils, FaBus, FaMapMarkerAlt, FaLanguage, FaDollarSign } from 'react-icons/fa'; // Importing icons
 
 function DiamondPackage() {
   return (
     <div className="diamond-page">
       <div className="diamond-header">
-        <h2>Hajj - Diamond VIP Package 2025</h2>
+        <h2>Hajj - Diamond VIP Package</h2>
       </div>
 
       <section className="diamond-content">
@@ -21,23 +22,23 @@ function DiamondPackage() {
             </thead>
             <tbody>
               <tr>
-                <td>Duration: 15-20 days</td>
-                <td>Breakfast, Lunch & Dinner as per selected package plan</td>
-                <td>ROUND Trip Air ticket - USA/CAN-Dhaka</td>
+                <td><FaHotel /> Duration: 15-20 days</td>
+                <td className='includes'><FaUtensils /> Breakfast, Lunch & Dinner as per selected package plan</td>
+                <td className='excludes'><FaPlane /> ROUND Trip Air ticket - USA/CAN-Dhaka</td>
               </tr>
               <tr>
-                <td>5 Star Hotel (With Hotel Buffet Meal Plan)</td>
-                <td>Transportation Services – Mina, Arafat, Muzdalifa & Jamarah (only for first day & last day)</td>
-                <td>Sacrifice (Qurbani) - Additional cost of $200 USD / $250 CAD per sheep</td>
+                <td><FaHotel /> 5 Star Hotel (With Hotel Buffet Meal Plan)</td>
+                <td className='includes'><FaBus /> Transportation Services – Mina, Arafat, Muzdalifa & Jamarah (only for first day & last day)</td>
+                <td className='excludes'><FaDollarSign /> Sacrifice (Qurbani) - Additional cost of $200 USD / $250 CAD per sheep</td>
               </tr>
               <tr>
-                <td>Within 50 meters from Haram</td>
-                <td>Sightseeing & Local Transport in Makkah & Madinah</td>
+                <td><FaMapMarkerAlt /> Within 50 meters from Haram</td>
+                <td className='includes'><FaMapMarkerAlt /> Sightseeing & Local Transport in Makkah & Madinah</td>
                 <td></td>
               </tr>
               <tr>
-                <td>Maktab A Category MINA ZONE - 03</td>
-                <td>Multilingual support available (English, Bangla & Arabic)</td>
+                <td><FaMapMarkerAlt /> Maktab A Category MINA ZONE - 03</td>
+                <td className='includes'><FaLanguage /> Multilingual support available (English, Bangla & Arabic)</td>
                 <td></td>
               </tr>
             </tbody>
@@ -56,18 +57,18 @@ function DiamondPackage() {
             </thead>
             <tbody>
               <tr>
-                <td>Early Bird Full Payment</td>
-                <td>$1000 (USD/CAD)</td>
+                <td><FaDollarSign /> Early Bird Full Payment</td>
+                <td className='includes'>$1000 (USD/CAD)</td>
                 <td>Before August 15, 2024</td>
               </tr>
               <tr>
-                <td>Happy Hearts Full Payment</td>
-                <td>$800 (USD/CAD)</td>
+                <td><FaDollarSign /> Happy Hearts Full Payment</td>
+                <td className='includes'>$800 (USD/CAD)</td>
                 <td>Before September 15, 2024</td>
               </tr>
               <tr>
-                <td>Win-Win Full Payment</td>
-                <td>$600 (USD/CAD)</td>
+                <td><FaDollarSign /> Win-Win Full Payment</td>
+                <td className='includes'>$600 (USD/CAD)</td>
                 <td>Before September 30, 2024</td>
               </tr>
             </tbody>

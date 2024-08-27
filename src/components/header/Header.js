@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
-import logo from '../../assets/images/logo2.png'; // Adjust the path as necessary
+import logo from '../../assets/images/logo4.png'; // Adjust the path as necessary
 
 function Header() {
   return (

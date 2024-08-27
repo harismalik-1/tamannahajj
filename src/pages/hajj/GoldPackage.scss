@@ -1,77 +1,197 @@
 .gold-page {
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  font-family: elegantIcons;
+  background-color: #101010; /* Darker background for premium feel */
+  padding-bottom: 0; /* Ensures no extra space at the bottom */
+
+  .gold-header {
+    height: 60vh;
     width: 100%;
-    color: white;
-    text-align: center;
-  
-    .gold-header {
-      height: 55vh;
-      width: 100%;
-      background-image: url('../../assets/umrah/16.jpg'); /* Adjust path as necessary */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      animation: zoomInOut 20s ease-in-out infinite;
-  
-      @keyframes zoomInOut {
-        0%, 100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.1);
-        }
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('../../assets/umrah/16.jpg');
+    background-size: cover;
+    background-attachment: fixed; /* Parallax effect */
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: zoomInOut 20s ease-in-out infinite;
+    margin-bottom: 0; /* Removes margin at the bottom */
+
+
+    @keyframes zoomInOut {
+      0%, 100% {
+        transform: scale(1);
       }
-  
-      h2 {
-        font-size: 3rem;
-        color: white;
-        font-family: elegantIcons;
+      50% {
+        transform: scale(1.1);
       }
     }
-  
-    .gold-content {
-      padding: 2rem;
-      background-color: #f5f5f5;
-      color: #333;
-  
-      .package-details,
-      .exclusive-offers,
-      .estimated-plan,
-      .bank-account,
-      .contact-info {
-        margin-bottom: 3rem;
-  
-        h3 {
-          font-size: 2rem;
-          color: #bf7300;
-          font-family: elegantIcons;
-          margin-bottom: 1rem;
+
+    h2 {
+      font-size: 3rem; /* Larger font size for better visibility */
+      color: #ffd700; /* Bright golden yellow for luxury */
+      text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeInDown 1.5s ease-out forwards;
+
+      @keyframes fadeInDown {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
         }
-  
-        table {
-          width: 100%;
-          margin-top: 1rem;
-          border-collapse: collapse;
-  
-          th, td {
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            text-align: left;
-            font-family: elegantIcons;
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  .gold-content {
+    padding: 5rem 3rem; /* Increased padding for more breathing space */
+    background-color: #292929; /* Warmer grey for content background */
+    color: #f5f5f5; /* Brighter text color for readability */
+    border-radius: 15px;
+    border: 5px solid #ffd700; /* Gold border for the content area */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 1200px;
+    margin: -60px auto 2rem;
+    text-align: left;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-out 0.5s forwards;
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .package-details,
+    .exclusive-offers,
+    .estimated-plan,
+    .bank-account,
+    .contact-info {
+      margin-bottom: 4rem;
+      padding: 3rem; /* Increased padding for a more luxurious feel */
+      border-radius: 10px;
+      background-color: rgba(42, 42, 42, 0.95); /* Warmer dark grey for contrast */
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      animation: fadeInLeft 1s ease-out forwards;
+      transform: translateX(-20px);
+      opacity: 0;
+
+      @keyframes fadeInLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      h3 {
+        font-size: 2.5rem; /* Larger font size for section headers */
+        color: #ffd700; /* Bright golden yellow for a luxurious feel */
+        margin-bottom: 2rem;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold; /* Bolder font weight for emphasis */
+        border-bottom: 4px solid #ffd700; /* Thicker border for emphasis */
+        padding-bottom: 1rem;
+        animation: pulse 2s infinite;
+
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
           }
-  
-          th {
-            background-color: #bf7300;
-            color: white;
+          50% {
+            transform: scale(1.05);
           }
-  
-          td {
-            background-color: #fff;
-            color: #333;
+          100% {
+            transform: scale(1);
+          }
+        }
+      }
+
+      table {
+        width: 100%;
+        margin-top: 2rem; /* Increased margin for separation */
+        border-collapse: collapse;
+        font-size: 1.6rem; /* Larger font size for table text */
+        line-height: 1.8; /* Increased line height for better readability */
+
+        th, td {
+          padding: 1.5rem; /* Increased padding for a more spacious feel */
+          border: 1px solid #666; /* Lighter border for better contrast */
+        }
+
+        th {
+          background-color: #454545; /* Warmer grey for table header */
+          color: #ffd700; /* Gold color for headers */
+          font-weight: 700; /* Bolder font weight for headers */
+          text-transform: uppercase;
+          transform: scaleY(0);
+          animation: growY 0.7s ease-out forwards;
+
+          @keyframes growY {
+            0% {
+              transform: scaleY(0);
+            }
+            100% {
+              transform: scaleY(1);
+            }
+          }
+        }
+
+        td {
+          background-color: #555555; /* Warmer grey for table rows */
+          color: #f5f5f5; /* Brighter text color for readability */
+          transform: scaleX(0);
+          animation: growX 0.7s ease-out forwards 0.5s;
+
+          @keyframes growX {
+            0% {
+              transform: scaleX(0);
+            }
+            100% {
+              transform: scaleX(1);
+            }
+          }
+        }
+
+        /* Styles for "Includes" and "Excludes" cells */
+        td.includes {
+          color: #5cb85c; /* Green for positive/included items */
+          align-items: center;
+
+          &::before {
+            color: #5cb85c;
+          }
+        }
+
+        td.excludes {
+          color: #d9534f; /* Red for negative/excluded items */
+          font-weight: bold; /* Emphasize excluded items */
+          display: flex;
+          align-items: center;
+
+          &::before {
+            color: #d9534f;
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
           }
         }
       }
     }
   }
+}
