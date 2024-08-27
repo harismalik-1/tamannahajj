@@ -1,39 +1,212 @@
 .umrah-page {
-    height: 55vh; /* Adjust height as necessary */
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  background-color: #101010;
+  padding-bottom: 0;
+
+  .umrah-header {
+    height: 60vh;
     width: 100%;
-    background-image: url('../../assets/umrah/2.jpg'); /* Adjust path as necessary */
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('../../assets/umrah/15.jpg');
     background-size: cover;
+    background-attachment: fixed;
     background-position: center;
-    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    text-align: center;
-    padding: 2rem;
-    animation: zoomInOut 20s ease-in-out infinite; /* Add the zoom-in effect */
-  
+    animation: zoomInOut 20s ease-in-out infinite;
+    margin-bottom: 0;
+
     @keyframes zoomInOut {
       0%, 100% {
-        transform: scale(1); /* No zoom at the start and end */
+        transform: scale(1);
       }
       50% {
-        transform: scale(1.1); /* Zoom in to 110% */
+        transform: scale(1.1);
       }
     }
-  
-    .umrah-info {
-      padding: 2rem;
-      border-radius: 10px;
-      max-width: 800px;
-      margin: 0 auto;
-      
-      h2 {
-        font-size: 2.5rem;
-        margin-bottom: 0rem;
-        color: white;
-        font-family: elegantIcons;
+
+    h2 {
+      font-size: 3rem;
+      color: #c0c0c0; /* Silver color for Umrah package */
+      font-family: 'Georgia', serif;
+      text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeInDown 1.5s ease-out forwards;
+
+      @keyframes fadeInDown {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     }
   }
-  
+
+  .umrah-content {
+    padding: 5rem 3rem;
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+    border-radius: 15px;
+    border: 5px solid #c0c0c0; /* Silver border for Umrah package */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 1200px;
+    margin: -60px auto 0;
+    text-align: left;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-out 0.5s forwards;
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .package-details,
+    .package-includes,
+    .package-excludes,
+    .contact-info {
+      margin-bottom: 2rem;
+      padding: 3rem;
+      border-radius: 10px;
+      background-color: rgba(28, 28, 28, 0.95);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      animation: fadeInLeft 1s ease-out forwards;
+      transform: translateX(-20px);
+      opacity: 0;
+
+      @keyframes fadeInLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      h3 {
+        font-size: 2.5rem;
+        color: #c0c0c0; /* Silver color for Umrah package */
+        margin-bottom: 2rem;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        border-bottom: 4px solid #c0c0c0;
+        padding-bottom: 1rem;
+        animation: pulse 2s infinite;
+
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.05);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+      }
+
+      table {
+        width: 100%;
+        margin-top: 2rem;
+        border-collapse: collapse;
+        font-size: 1.4rem;
+        line-height: 1.8;
+
+        th, td {
+          padding: 1.5rem;
+          border: 1px solid #444;
+        }
+
+        th {
+          background-color: #2e2e2e;
+          color: #fff;
+          font-weight: 700;
+          text-transform: uppercase;
+          transform: scaleY(0);
+          animation: growY 0.7s ease-out forwards;
+
+          @keyframes growY {
+            0% {
+              transform: scaleY(0);
+            }
+            100% {
+              transform: scaleY(1);
+            }
+          }
+        }
+
+        td {
+          background-color: #3a3a3a;
+          color: #e0e0e0;
+          transform: scaleX(0);
+          animation: growX 0.7s ease-out forwards 0.5s;
+
+          @keyframes growX {
+            0% {
+              transform: scaleX(0);
+            }
+            100% {
+              transform: scaleX(1);
+            }
+          }
+        }
+
+        /* Styles for "Includes" and "Excludes" cells */
+        td.includes {
+          color: #5cb85c; /* Green for positive/included items */
+          align-items: center;
+
+          &::before {
+            color: #5cb85c;
+          }
+        }
+
+        td.excludes {
+          color: #d9534f; /* Red for negative/excluded items */
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+
+          &::before {
+            color: #d9534f;
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+
+          svg {
+            margin-right: 0.5rem;
+            color: #c0c0c0; /* Silver color for icons */
+          }
+        }
+      }
+    }
+  }
+}
