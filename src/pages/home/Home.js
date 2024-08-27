@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import PackageCard from '../../components/packagecard/PackageCard';
 import videobg from '../../assets/videos/videobg3.mp4'; // Adjust the path as necessary
 import './Home.scss';
 
@@ -12,8 +11,10 @@ function Counter({ end, duration }) {
     const incrementTime = (duration / end) * 100;
 
     const timer = setInterval(() => {
-      if (end > 500)
+      if (end > 500 & end < 2020)
         start += 10;
+      else if (end > 1000)
+        start += 50;
       else
         start += 1;
       setCount(start);
@@ -22,7 +23,8 @@ function Counter({ end, duration }) {
       }
     }, incrementTime);
   }, [end, duration]);
-
+  if (end === 2010)
+    return <h2>{count}</h2>;
   return <h2>{count}+</h2>;
 }
 
@@ -37,20 +39,20 @@ function Home() {
       </div>
       <section className="banner">
         <h1>Plan your Hajj and Umrah with a Trusted Partner</h1>
-        <Link to="/packages" className="btn btn-primary">Our Packages</Link>
+        <Link to="/Hajj" className="btn btn-primary">Our Packages</Link>
         
         <div className="stats-counter">
           <div className="counter-item">
-            <Counter end={1000} duration={50} />
-            <p>Pilgrims Served</p>
+            <Counter end={5000} duration={50} />
+            <p>Pilgrims Taken</p>
           </div>
           <div className="counter-item">
-            <Counter end={200} duration={1} />
-            <p>Umrah Tours Taken</p>
+            <Counter end={20} duration={1} />
+            <p>Umrah Tours per year</p>
           </div>
           <div className="counter-item">
-            <Counter end={50} duration={2} />
-            <p>Hajj Tours Conducted</p>
+            <Counter end={2010} duration={2} />
+            <p>Serving Since</p>
           </div>
         </div>
         
@@ -99,13 +101,13 @@ function Home() {
         <h1>Our Services</h1>
         <div className="services-grid">
           <div className="service-card">
-            <h3>Multiple Hajj Packages</h3>
+            <h3>Complete Hajj Packages</h3>
           </div>
           <div className="service-card">
-            <h3>Year-round Umrah Services</h3>
+            <h3>Umrah Services</h3>
           </div>
           <div className="service-card">
-            <h3>Local Hajj</h3>
+            <h3>Umrah during Ramadan</h3>
           </div>
         </div>
         <Link to="/all-services" className="btn btn-secondary">Explore All Services</Link>
@@ -113,9 +115,6 @@ function Home() {
       <section className="featured-packages">
         <h2>About Us</h2>
         <div className="packages-grid">
-          <PackageCard title="Silver Package" description="10 days in Makkah and Madinah" price="CAD 10,900" />
-          <PackageCard title="Gold Package" description="15 days in Makkah and Madinah" price="CAD 13,600" />
-          <PackageCard title="Diamond Package" description="20 days in Makkah and Madinah" price="CAD 17,000" />
         </div>
       </section>
     </div>

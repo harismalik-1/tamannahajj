@@ -1,0 +1,39 @@
+.umrah-page {
+    height: 55vh; /* Adjust height as necessary */
+    width: 100%;
+    background-image: url('../../assets/umrah/2.jpg'); /* Adjust path as necessary */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    animation: zoomInOut 20s ease-in-out infinite; /* Add the zoom-in effect */
+  
+    @keyframes zoomInOut {
+      0%, 100% {
+        transform: scale(1); /* No zoom at the start and end */
+      }
+      50% {
+        transform: scale(1.1); /* Zoom in to 110% */
+      }
+    }
+  
+    .umrah-info {
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: 0 auto;
+      
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 0rem;
+        color: white;
+        font-family: elegantIcons;
+      }
+    }
+  }
+  

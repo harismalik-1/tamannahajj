@@ -1,18 +1,18 @@
 .header {
-  position: fixed; /* Fix the header at the top */
+  position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  z-index: 1000; /* Ensure it stays above other content */
-  backdrop-filter: blur(10px); /* Optional: Blur the background behind the header */
+  z-index: 1000;
+  backdrop-filter: blur(10px);
 
   .top-info {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 1rem;
-    background-color: rgba(0, 0, 0, 0.5); /* Slightly darker background */
+    background-color: rgba(0, 0, 0, 0.5);
     font-size: 0.9rem;
     font-family: elegantIcons;
   }
@@ -21,7 +21,6 @@
     margin: 0;
     border: none;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
-
   }
 
   .nav {
@@ -35,8 +34,8 @@
 
     &__logo {
       .logo {
-        padding-top: 3%;        
-        height: 68px; // Adjust height as needed
+        padding-top: 3%;
+        height: 68px;
         width: none;
       }
     }
@@ -44,23 +43,68 @@
     &__links {
       list-style: none;
       display: flex;
-      justify-content: space-around; /* Distribute space between links */
+      justify-content: space-around;
       flex-grow: 1;
-      margin-left: 2rem; /* Adjust spacing from the logo */
+      margin-left: 2rem;
 
       li {
         display: flex;
         align-items: center;
-        font-family: 'elegentIcons';
+        position: relative;
+        font-family: 'elegantIcons';
         font-size: 1.3rem;
+
         a {
           color: white;
-          padding: 0.5rem 1rem; /* Adjust padding for links */
+          padding: 0.5rem 1rem;
           text-decoration: none;
+          transition: color 0.3s ease;
 
           &:hover {
-            color: #ddd;
+            color: #f3a712;
           }
+        }
+
+        /* Dropdown menu */
+        .dropdown-menu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: rgba(0, 0, 0, 0.9);
+          list-style: none;
+          padding: 0.5rem 0;
+          margin: 0;
+          min-width: 200px;
+          border-radius: 8px;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+          z-index: 1000;
+          transition: all 0.3s ease;
+
+          li {
+            width: 100%;
+
+            a {
+              padding: 0.75rem 1.5rem;
+              width: 100%;
+              display: block;
+              text-align: left;
+              color: white;
+              font-size: 1rem;
+              transition: background-color 0.3s ease, color 0.3s ease;
+
+              &:hover {
+                background-color: rgba(243, 167, 18, 0.1);
+                color: #f3a712;
+              }
+            }
+          }
+        }
+
+        &:hover .dropdown-menu {
+          display: block;
+          opacity: 1;
+          transform: translateY(0);
         }
       }
     }
