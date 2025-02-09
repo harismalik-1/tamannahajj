@@ -11,6 +11,10 @@ import GoldPackage from './pages/hajj/GoldPackage';
 import SilverPackage from './pages/hajj/SilverPackage';
 import RamadanUmrah from './pages/umrah/RamadanUmrah';
 import Header from './components/Header/Header';
+import emailjs from '@emailjs/browser';
+
+// Initialize EmailJS with your public key
+emailjs.init("nyEKb64Jfjk2yTK4d");
 
 function App() {
   return (

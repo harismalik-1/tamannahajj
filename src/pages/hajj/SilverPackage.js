@@ -1,15 +1,143 @@
 import React from 'react';
 import './SilverPackage.scss';
-import { FaHotel, FaPlane, FaUtensils, FaBus, FaMapMarkerAlt, FaLanguage, FaDollarSign } from 'react-icons/fa'; // Importing icons
+import { FaHotel, FaPlane, FaUtensils, FaBus, FaMapMarkerAlt, FaLanguage, FaDollarSign, FaAward, FaShieldAlt, FaStar, FaCheck } from 'react-icons/fa';
 
 function SilverPackage() {
   return (
     <div className="silver-package-page">
       <div className="silver-header">
-        <h2>Hajj - Silver Package</h2>
+        <div className="header-content">
+          <FaAward className="award-icon" />
+          <h2>Silver Hajj Package</h2>
+          <div className="rating">
+            <FaStar /><FaStar />
+          </div>
+          <p className="header-subtitle">Reliable Hajj Experience with Quality Service</p>
+          <div className="header-features">
+            <span><FaHotel /> Standard Hotels (Within 750m from Haram)</span>
+            <span><FaMapMarkerAlt /> Maktab D Category MINA ZONE - 03</span>
+            <span><FaBus /> Standard Transportation</span>
+          </div>
+        </div>
       </div>
 
       <section className="silver-content">
+        <div className="package-pricing">
+          <div className="section-header">
+            <FaShieldAlt className="section-icon" />
+            <h3>Package Options</h3>
+            <p className="section-subtitle">Choose Your Preferred Accommodation</p>
+          </div>
+          
+          <div className="pricing-cards">
+            <div className="price-card">
+              <div className="card-header">
+                <FaHotel className="room-icon" />
+                <h4>Quad Room</h4>
+                <p className="room-subtitle">4-Person Standard Accommodation</p>
+                <div className="amenities">
+                  <span><FaCheck /> Standard Hotel Room</span>
+                  <span><FaCheck /> Full Board Meals</span>
+                  <span><FaCheck /> Standard Transportation</span>
+                </div>
+              </div>
+              <div className="price-details">
+                <div className="price-item">
+                  <span className="currency">USD</span>
+                  <span className="amount">$8,000</span>
+                  <span className="per-person">per person</span>
+                </div>
+                <div className="price-item">
+                  <span className="currency">CAD</span>
+                  <span className="amount">$10,900</span>
+                  <span className="per-person">per person</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="price-card">
+              <div className="card-header">
+                <FaHotel className="room-icon" />
+                <h4>Triple Room</h4>
+                <p className="room-subtitle">3-Person Standard Accommodation</p>
+                <div className="amenities">
+                  <span><FaCheck /> Standard Hotel Room</span>
+                  <span><FaCheck /> Full Board Meals</span>
+                  <span><FaCheck /> Standard Transportation</span>
+                </div>
+              </div>
+              <div className="price-details">
+                <div className="price-item">
+                  <span className="currency">USD</span>
+                  <span className="amount">$9,000</span>
+                  <span className="per-person">per person</span>
+                </div>
+                <div className="price-item">
+                  <span className="currency">CAD</span>
+                  <span className="amount">$12,300</span>
+                  <span className="per-person">per person</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="price-card featured">
+              <div className="featured-label">Most Popular</div>
+              <div className="card-header">
+                <FaHotel className="room-icon" />
+                <h4>Double Room</h4>
+                <p className="room-subtitle">2-Person Standard Accommodation</p>
+                <div className="amenities">
+                  <span><FaCheck /> Standard Hotel Room</span>
+                  <span><FaCheck /> Full Board Meals</span>
+                  <span><FaCheck /> Standard Transportation</span>
+                </div>
+              </div>
+              <div className="price-details">
+                <div className="price-item">
+                  <span className="currency">USD</span>
+                  <span className="amount">$10,500</span>
+                  <span className="per-person">per person</span>
+                </div>
+                <div className="price-item">
+                  <span className="currency">CAD</span>
+                  <span className="amount">$14,300</span>
+                  <span className="per-person">per person</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="payment-plan">
+            <h4>Flexible Payment Plan</h4>
+            <div className="payment-grid">
+              <div className="payment-step">
+                <div className="step-number">1</div>
+                <div className="step-content">
+                  <h5>Initial Deposit</h5>
+                  <p className="amount">$2,000 USD/CAD</p>
+                  <p className="date">Upon Booking</p>
+                </div>
+              </div>
+              <div className="payment-step">
+                <div className="step-number">2</div>
+                <div className="step-content">
+                  <h5>Second Payment</h5>
+                  <p className="amount">$2,000 USD/CAD</p>
+                  <p className="date">Before March 15, 2024</p>
+                </div>
+              </div>
+              <div className="payment-step">
+                <div className="step-number">3</div>
+                <div className="step-content">
+                  <h5>Final Payment</h5>
+                  <p className="amount">Remaining Balance</p>
+                  <p className="date">Before April 15, 2024</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="package-details">
           <h3>Package Details</h3>
           <table>
@@ -28,7 +156,7 @@ function SilverPackage() {
               </tr>
               <tr>
                 <td><FaHotel /> Standard Hotel (With Catering 3 Meal Plan)</td>
-                <td className='includes'><FaBus /> Transportation Services – Mina, Arafat, Muzdalifa & Jamarah (only for first day & last day)</td>
+                <td className='includes'><FaBus /> Transportation Services – Mina, Arafat, Muzdalifa & Jamarah</td>
                 <td className='excludes'><FaDollarSign /> Sacrifice (Qurbani) - Additional cost of $200 USD / $250 CAD per sheep</td>
               </tr>
               <tr>

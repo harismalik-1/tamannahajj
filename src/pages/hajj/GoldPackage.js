@@ -1,15 +1,143 @@
 import React from 'react';
 import './GoldPackage.scss';
-import { FaHotel, FaPlane, FaUtensils, FaBus, FaMapMarkerAlt, FaLanguage, FaDollarSign } from 'react-icons/fa'; // Importing icons
+import { FaHotel, FaPlane, FaUtensils, FaBus, FaMapMarkerAlt, FaLanguage, FaDollarSign, FaMedal, FaTrophy, FaStar, FaCheck } from 'react-icons/fa';
 
 function GoldPackage() {
   return (
     <div className="gold-page">
       <div className="gold-header">
-        <h2>Hajj - Gold Package</h2>
+        <div className="header-content">
+          <FaMedal className="medal-icon" />
+          <h2>Gold Hajj Package</h2>
+          <div className="rating">
+            <FaStar /><FaStar /><FaStar />
+          </div>
+          <p className="header-subtitle">Premium Hajj Experience with Exceptional Service</p>
+          <div className="header-features">
+            <span><FaHotel /> 3-Star Hotels (Within 450m from Haram)</span>
+            <span><FaMapMarkerAlt /> Maktab A Category MINA ZONE - 03</span>
+            <span><FaBus /> VIP Transportation</span>
+          </div>
+        </div>
       </div>
 
       <section className="gold-content">
+        <div className="package-pricing">
+          <div className="section-header">
+            <FaTrophy className="section-icon" />
+            <h3>Premium Package Options</h3>
+            <p className="section-subtitle">Choose Your Preferred Accommodation</p>
+          </div>
+          
+          <div className="pricing-cards">
+            <div className="price-card">
+              <div className="card-header">
+                <FaHotel className="room-icon" />
+                <h4>Quad Suite</h4>
+                <p className="room-subtitle">4-Person Comfort Accommodation</p>
+                <div className="amenities">
+                  <span><FaCheck /> 3-Star Hotel Room</span>
+                  <span><FaCheck /> Full Board Meals</span>
+                  <span><FaCheck /> VIP Transportation</span>
+                </div>
+              </div>
+              <div className="price-details">
+                <div className="price-item">
+                  <span className="currency">USD</span>
+                  <span className="amount">$10,00</span>
+                  <span className="per-person">per person</span>
+                </div>
+                <div className="price-item">
+                  <span className="currency">CAD</span>
+                  <span className="amount">$13,600</span>
+                  <span className="per-person">per person</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="price-card">
+              <div className="card-header">
+                <FaHotel className="room-icon" />
+                <h4>Triple Suite</h4>
+                <p className="room-subtitle">3-Person Premium Accommodation</p>
+                <div className="amenities">
+                  <span><FaCheck /> 3-Star Hotel Room</span>
+                  <span><FaCheck /> Full Board Meals</span>
+                  <span><FaCheck /> VIP Transportation</span>
+                </div>
+              </div>
+              <div className="price-details">
+                <div className="price-item">
+                  <span className="currency">USD</span>
+                  <span className="amount">$11,000</span>
+                  <span className="per-person">per person</span>
+                </div>
+                <div className="price-item">
+                  <span className="currency">CAD</span>
+                  <span className="amount">$15,000</span>
+                  <span className="per-person">per person</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="price-card featured">
+              <div className="featured-label">Most Popular</div>
+              <div className="card-header">
+                <FaHotel className="room-icon" />
+                <h4>Double Suite</h4>
+                <p className="room-subtitle">2-Person Premium Accommodation</p>
+                <div className="amenities">
+                  <span><FaCheck /> Premium 3-Star Room</span>
+                  <span><FaCheck /> Full Board Premium Meals</span>
+                  <span><FaCheck /> Premium VIP Transportation</span>
+                </div>
+              </div>
+              <div className="price-details">
+                <div className="price-item">
+                  <span className="currency">USD</span>
+                  <span className="amount">$12,000</span>
+                  <span className="per-person">per person</span>
+                </div>
+                <div className="price-item">
+                  <span className="currency">CAD</span>
+                  <span className="amount">$16,300</span>
+                  <span className="per-person">per person</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="payment-plan">
+            <h4>Flexible Payment Plan</h4>
+            <div className="payment-grid">
+              <div className="payment-step">
+                <div className="step-number">1</div>
+                <div className="step-content">
+                  <h5>Initial Deposit</h5>
+                  <p className="amount">$3,000 USD/CAD</p>
+                  <p className="date">Upon Booking</p>
+                </div>
+              </div>
+              <div className="payment-step">
+                <div className="step-number">2</div>
+                <div className="step-content">
+                  <h5>Second Payment</h5>
+                  <p className="amount">$3,000 USD/CAD</p>
+                  <p className="date">Before March 15, 2024</p>
+                </div>
+              </div>
+              <div className="payment-step">
+                <div className="step-number">3</div>
+                <div className="step-content">
+                  <h5>Final Payment</h5>
+                  <p className="amount">Remaining Balance</p>
+                  <p className="date">Before April 15, 2024</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="package-details">
           <h3>Package Details</h3>
           <table>
@@ -23,22 +151,22 @@ function GoldPackage() {
             <tbody>
               <tr>
                 <td><FaHotel /> Duration: 15-20 days</td>
-                <td className='includes'><FaUtensils /> Breakfast, Lunch & Dinner as per selected package plan</td>
+                <td className='includes'><FaUtensils /> 3 Meals Daily (Breakfast, Lunch & Dinner)</td>
                 <td className='excludes'><FaPlane /> ROUND Trip Air ticket - USA/CAN-Dhaka</td>
               </tr>
               <tr>
-                <td><FaHotel /> 3 Star Hotel (With Catering 3 Meal Plan)</td>
-                <td className='includes'><FaBus /> Transportation Services – Mina, Arafat, Muzdalifa & Jamarah (only for first day & last day)</td>
-                <td className='excludes'><FaDollarSign /> Sacrifice (Qurbani) - Additional cost of $200 USD / $250 CAD per sheep</td>
+                <td><FaHotel /> 3 Star Hotel in Makkah & Madinah</td>
+                <td className='includes'><FaBus /> All Ground Transportation in KSA</td>
+                <td className='excludes'><FaDollarSign /> Qurbani/Sacrifice ($200 USD / $250 CAD)</td>
               </tr>
               <tr>
-                <td><FaMapMarkerAlt /> Within 450 meters from Haram</td>
-                <td className='includes'><FaMapMarkerAlt /> Sightseeing & Local Transport in Makkah & Madinah</td>
-                <td></td>
+                <td><FaMapMarkerAlt /> Within 450m from Haram</td>
+                <td className='includes'><FaMapMarkerAlt /> Ziyarah in Makkah & Madinah</td>
+                <td className='excludes'><FaDollarSign /> Personal Expenses</td>
               </tr>
               <tr>
-                <td><FaMapMarkerAlt /> Maktab A Category MINA ZONE - 03</td>
-                <td className='includes'><FaLanguage /> Multilingual support available (English, Bangla & Arabic)</td>
+                <td><FaMapMarkerAlt /> Maktab A Category (MINA ZONE - 03)</td>
+                <td className='includes'><FaLanguage /> Multilingual Guide Service</td>
                 <td></td>
               </tr>
             </tbody>
@@ -116,7 +244,6 @@ function GoldPackage() {
                 <td>Arafat</td>
                 <td>Arafat Tent Lunch (Only)</td>
               </tr>
-              {/* Continue with the rest of the data */}
             </tbody>
           </table>
         </div>

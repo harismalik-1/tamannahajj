@@ -1,84 +1,338 @@
+// Variables
+$primary-bg: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.9));
+$secondary-bg: linear-gradient(145deg, rgba(28, 28, 28, 0.95), rgba(40, 40, 40, 0.95));
+$accent-color: #C0C0C0; // Silver color
+$accent-gradient: linear-gradient(45deg, #C0C0C0, #E8E8E8);
+$text-primary: #ffffff;
+$text-secondary: #e2e8f0;
+$border-accent: rgba(192, 192, 192, 0.3);
+$card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+// Mixins
+@mixin responsive-font($min-size, $max-size) {
+  font-size: clamp(#{$min-size}rem, calc(#{$min-size}rem + 2vw), #{$max-size}rem);
+}
+
+@mixin responsive-spacing($min-size, $max-size) {
+  padding: clamp(#{$min-size}rem, calc(#{$min-size}rem + 2vw), #{$max-size}rem);
+}
+
+@mixin card-style {
+  background: $secondary-bg;
+  border: 1px solid $border-accent;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  box-shadow: $card-shadow;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $accent-color;
+  }
+}
+
+@mixin section-header {
+  text-align: center;
+  color: $text-primary;
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid $border-accent;
+}
+
 .umrah-page {
   width: 100%;
-  color: #fff;
+  color: $text-primary;
   text-align: center;
   font-family: 'Playfair Display', serif;
-  background-color: #101010;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   padding-bottom: 0;
 
   .umrah-header {
-    height: 60vh;
+    height: 100vh;
     width: 100%;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('../../assets/umrah/15.jpg');
+    background-image: 
+      linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url('../../assets/umrah/15.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: zoomInOut 20s ease-in-out infinite;
-    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
 
-    @keyframes zoomInOut {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at center, rgba(192, 192, 192, 0.1) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
     }
 
-    h2 {
-      font-size: 3rem;
-      color: #c0c0c0; /* Silver color for Umrah package */
-      font-family: 'Georgia', serif;
-      text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
-      opacity: 0;
-      transform: translateY(-20px);
-      animation: fadeInDown 1.5s ease-out forwards;
+    .header-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1400px;
+      padding: 0 2rem;
+      
+      .building-icon {
+        font-size: 4rem;
+        color: $accent-color;
+        margin-bottom: 2rem;
+        filter: drop-shadow(0 0 10px rgba(192, 192, 192, 0.3));
+        animation: float 3s ease-in-out infinite;
 
-      @keyframes fadeInDown {
-        0% {
-          opacity: 0;
-          transform: translateY(-20px);
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
         }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
+      }
+
+      h2 {
+        @include responsive-font(2, 4);
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-family: 'Playfair Display', serif;
+        line-height: 1.2;
+      }
+
+      .rating {
+        margin: 1.5rem 0;
+        
+        svg {
+          color: $accent-color;
+          font-size: 2rem;
+          margin: 0 0.3rem;
+          filter: drop-shadow(0 0 5px rgba(192, 192, 192, 0.5));
+        }
+      }
+
+      .header-subtitle {
+        @include responsive-font(1, 2);
+        color: #ffffff;
+        margin: 1.5rem 0;
+        font-style: italic;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-family: 'Playfair Display', serif;
+        line-height: 1.4;
+      }
+
+      .header-features {
+        display: flex;
+        justify-content: center;
+        gap: clamp(1rem, 3vw, 3rem);
+        margin-top: 3rem;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+
+        span {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          @include responsive-font(0.9, 1.3);
+          padding: 1rem 2rem;
+          background: rgba(0, 0, 0, 0.7);
+          border-radius: 50px;
+          border: 1px solid rgba(192, 192, 192, 0.2);
+          transition: all 0.3s ease;
+
+          &:hover {
+            transform: translateY(-2px);
+            border-color: $accent-color;
+          }
+
+          svg {
+            color: $accent-color;
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            filter: drop-shadow(0 0 5px rgba(192, 192, 192, 0.3));
+          }
         }
       }
     }
   }
 
   .umrah-content {
-    padding: 5rem 3rem;
-    background-color: #1c1c1c;
-    color: #e0e0e0;
-    border-radius: 15px;
-    border: 5px solid #c0c0c0; /* Silver border for Umrah package */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    max-width: 1200px;
-    margin: -60px auto 0;
-    text-align: left;
-    opacity: 0;
-    animation: fadeInUp 1.5s ease-out 0.5s forwards;
+    padding: 4rem 2rem;
+    margin-top: -50px;
 
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+
+      .section-icon {
+        font-size: 3rem;
+        color: $accent-color;
+        margin-bottom: 1rem;
+        filter: drop-shadow(0 0 10px rgba(192, 192, 192, 0.3));
       }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
+
+      h3 {
+        @include responsive-font(1.8, 2.5);
+        color: $text-primary;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .section-subtitle {
+        @include responsive-font(1, 1.5);
+        color: $text-secondary;
+        font-style: italic;
+      }
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 0 auto;
+      max-width: 1400px;
+
+      .price-card {
+        @include card-style;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+
+        &.featured {
+          transform: scale(1.05);
+          border-color: $accent-color;
+
+          .featured-label {
+            position: absolute;
+            top: 1.5rem;
+            right: -2rem;
+            background: $accent-color;
+            color: #000;
+            padding: 0.5rem 3rem;
+            transform: rotate(45deg);
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          }
+
+          &:hover {
+            transform: scale(1.08);
+          }
+        }
+
+        .card-header {
+          margin-bottom: 2rem;
+          text-align: center;
+
+          .room-icon {
+            font-size: 2.5rem;
+            color: $accent-color;
+            margin-bottom: 1rem;
+          }
+
+          h4 {
+            @include responsive-font(1.3, 1.8);
+            color: $text-primary;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+          }
+
+          .room-subtitle {
+            color: $text-secondary;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+          }
+
+          .amenities {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+
+            span {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              color: $text-secondary;
+              font-size: 0.9rem;
+
+              svg {
+                color: $accent-color;
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+
+        .price-details {
+          .price-item {
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+
+            .option-label {
+              color: $accent-color;
+              font-size: 0.9rem;
+              margin-bottom: 1rem;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+            }
+
+            .price-grid {
+              display: grid;
+              gap: 1rem;
+
+              .room-option {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+                &:last-child {
+                  border-bottom: none;
+                }
+
+                .room-type {
+                  color: $text-secondary;
+                  font-size: 0.9rem;
+                }
+
+                .amount {
+                  color: $text-primary;
+                  font-size: 1.2rem;
+                  font-weight: 600;
+                }
+
+                .currency {
+                  color: $accent-color;
+                  font-size: 0.9rem;
+                }
+              }
+            }
+          }
+        }
       }
     }
 
     .package-details,
-    .package-includes,
-    .package-excludes,
     .contact-info {
-      margin-bottom: 2rem;
+      margin-bottom: 4rem;
       padding: 3rem;
       border-radius: 10px;
       background-color: rgba(28, 28, 28, 0.95);
@@ -99,111 +353,106 @@
       }
 
       h3 {
-        font-size: 2.5rem;
-        color: #c0c0c0; /* Silver color for Umrah package */
+        @include responsive-font(1.8, 2.5);
+        color: $text-primary;
         margin-bottom: 2rem;
         text-align: center;
         text-transform: uppercase;
         font-weight: bold;
-        border-bottom: 4px solid #c0c0c0;
+        border-bottom: 4px solid $border-accent;
         padding-bottom: 1rem;
-        animation: pulse 2s infinite;
-
-        @keyframes pulse {
-          0% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.05);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
       }
 
       table {
         width: 100%;
         margin-top: 2rem;
         border-collapse: collapse;
-        font-size: 1.4rem;
+        font-size: clamp(0.9rem, calc(0.9rem + 1vw), 1.4rem);
         line-height: 1.8;
 
         th, td {
-          padding: 1.5rem;
+          padding: clamp(0.8rem, 2vw, 1.5rem);
           border: 1px solid #444;
         }
 
         th {
           background-color: #2e2e2e;
-          color: #fff;
+          color: $accent-color;
           font-weight: 700;
           text-transform: uppercase;
-          transform: scaleY(0);
-          animation: growY 0.7s ease-out forwards;
-
-          @keyframes growY {
-            0% {
-              transform: scaleY(0);
-            }
-            100% {
-              transform: scaleY(1);
-            }
-          }
         }
 
         td {
           background-color: #3a3a3a;
-          color: #e0e0e0;
-          transform: scaleX(0);
-          animation: growX 0.7s ease-out forwards 0.5s;
+          color: $text-secondary;
 
-          @keyframes growX {
-            0% {
-              transform: scaleX(0);
-            }
-            100% {
-              transform: scaleX(1);
-            }
-          }
-        }
-
-        /* Styles for "Includes" and "Excludes" cells */
-        td.includes {
-          color: #5cb85c; /* Green for positive/included items */
-          align-items: center;
-
-          &::before {
+          &.includes {
             color: #5cb85c;
+            svg {
+              color: #5cb85c;
+              margin-right: 0.5rem;
+              font-size: 1.2rem;
+            }
           }
-        }
 
-        td.excludes {
-          color: #d9534f; /* Red for negative/excluded items */
-          font-weight: bold;
-          display: flex;
-          align-items: center;
-
-          &::before {
+          &.excludes {
             color: #d9534f;
+            svg {
+              color: #d9534f;
+              margin-right: 0.5rem;
+              font-size: 1.2rem;
+            }
+          }
+
+          svg {
             font-size: 1.2rem;
-            margin-right: 0.5rem;
+            vertical-align: middle;
           }
         }
       }
+    }
+  }
 
-      ul {
-        list-style: none;
-        padding: 0;
+  // Media Queries
+  @media (max-width: 768px) {
+    .umrah-header {
+      height: 80vh;
 
-        li {
-          margin-bottom: 1rem;
-          display: flex;
-          align-items: center;
+      .header-content {
+        padding: 0 1rem;
 
-          svg {
-            margin-right: 0.5rem;
-            color: #c0c0c0; /* Silver color for icons */
+        h2 {
+          font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        .header-subtitle {
+          font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+        }
+
+        .header-features {
+          gap: 1rem;
+          
+          span {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    .umrah-content {
+      padding: 3rem 1rem;
+      margin-top: -30px;
+
+      .package-details,
+      .contact-info {
+        padding: 2rem 1rem;
+
+        table {
+          font-size: clamp(0.8rem, calc(0.8rem + 1vw), 1.2rem);
+
+          th, td {
+            padding: 0.8rem;
           }
         }
       }

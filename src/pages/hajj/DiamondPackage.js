@@ -1,15 +1,143 @@
 import React from 'react';
 import './DiamondPackage.scss';
-import { FaHotel, FaPlane, FaUtensils, FaBus, FaMapMarkerAlt, FaLanguage, FaDollarSign } from 'react-icons/fa'; // Importing icons
+import { FaHotel, FaPlane, FaUtensils, FaBus, FaMapMarkerAlt, FaLanguage, FaDollarSign, FaCrown, FaGem, FaStar, FaCheck } from 'react-icons/fa'; // Importing icons
 
 function DiamondPackage() {
   return (
     <div className="diamond-page">
       <div className="diamond-header">
-        <h2>Hajj - Diamond VIP Package</h2>
+        <div className="header-content">
+          <FaCrown className="crown-icon" />
+          <h2>Diamond VIP Hajj Package</h2>
+          <div className="rating">
+            <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+          </div>
+          <p className="header-subtitle">Experience the Ultimate in Luxury and Spiritual Journey</p>
+          <div className="header-features">
+            <span><FaHotel /> 5-Star Hotels (Within 50m from Haram)</span>
+            <span><FaMapMarkerAlt /> Maktab A Category MINA ZONE - 03</span>
+            <span><FaBus /> VIP Transportation</span>
+          </div>
+        </div>
       </div>
 
       <section className="diamond-content">
+        <div className="package-pricing">
+          <div className="section-header">
+            <FaGem className="section-icon" />
+            <h3>Premium Package Options</h3>
+            <p className="section-subtitle">Choose Your Preferred Accommodation</p>
+          </div>
+          
+          <div className="pricing-cards">
+            <div className="price-card">
+              <div className="card-header">
+                <FaHotel className="room-icon" />
+                <h4>Quad Suite</h4>
+                <p className="room-subtitle">4-Person Luxury Accommodation</p>
+                <div className="amenities">
+                  <span><FaCheck /> 5-Star Hotel Room</span>
+                  <span><FaCheck /> Full Board Meals</span>
+                  <span><FaCheck /> VIP Transportation</span>
+                </div>
+              </div>
+              <div className="price-details">
+                <div className="price-item">
+                  <span className="currency">USD</span>
+                  <span className="amount">$12,500</span>
+                  <span className="per-person">per person</span>
+                </div>
+                <div className="price-item">
+                  <span className="currency">CAD</span>
+                  <span className="amount">$15,500</span>
+                  <span className="per-person">per person</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="price-card">
+              <div className="card-header">
+                <FaHotel className="room-icon" />
+                <h4>Triple Suite</h4>
+                <p className="room-subtitle">3-Person Premium Accommodation</p>
+                <div className="amenities">
+                  <span><FaCheck /> 5-Star Hotel Room</span>
+                  <span><FaCheck /> Full Board Meals</span>
+                  <span><FaCheck /> VIP Transportation</span>
+                </div>
+              </div>
+              <div className="price-details">
+                <div className="price-item">
+                  <span className="currency">USD</span>
+                  <span className="amount">$13,500</span>
+                  <span className="per-person">per person</span>
+                </div>
+                <div className="price-item">
+                  <span className="currency">CAD</span>
+                  <span className="amount">$16,500</span>
+                  <span className="per-person">per person</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="price-card featured">
+              <div className="featured-label">Most Popular</div>
+              <div className="card-header">
+                <FaHotel className="room-icon" />
+                <h4>Executive Suite</h4>
+                <p className="room-subtitle">2-Person VIP Accommodation</p>
+                <div className="amenities">
+                  <span><FaCheck /> Premium 5-Star Room</span>
+                  <span><FaCheck /> Full Board Luxury Meals</span>
+                  <span><FaCheck /> Premium VIP Transportation</span>
+                </div>
+              </div>
+              <div className="price-details">
+                <div className="price-item">
+                  <span className="currency">USD</span>
+                  <span className="amount">$14,500</span>
+                  <span className="per-person">per person</span>
+                </div>
+                <div className="price-item">
+                  <span className="currency">CAD</span>
+                  <span className="amount">$17,500</span>
+                  <span className="per-person">per person</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="payment-plan">
+            <h4>Flexible Payment Plan</h4>
+            <div className="payment-grid">
+              <div className="payment-step">
+                <div className="step-number">1</div>
+                <div className="step-content">
+                  <h5>Initial Deposit</h5>
+                  <p className="amount">$5,000 USD/CAD</p>
+                  <p className="date">Upon Booking</p>
+                </div>
+              </div>
+              <div className="payment-step">
+                <div className="step-number">2</div>
+                <div className="step-content">
+                  <h5>Second Payment</h5>
+                  <p className="amount">$5,000 USD/CAD</p>
+                  <p className="date">Before March 15, 2024</p>
+                </div>
+              </div>
+              <div className="payment-step">
+                <div className="step-number">3</div>
+                <div className="step-content">
+                  <h5>Final Payment</h5>
+                  <p className="amount">Remaining Balance</p>
+                  <p className="date">Before April 15, 2024</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="package-details">
           <h3>Package Details</h3>
           <table>

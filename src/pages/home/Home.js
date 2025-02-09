@@ -98,23 +98,55 @@ function Home() {
         </div>
       </section>
       <section className="services">
-        <h1>Our Services</h1>
-        <div className="services-grid">
-          <div className="service-card">
-            <h3>Complete Hajj Packages</h3>
+        <div className="services-overlay">
+          <h1>Our Services</h1>
+          <div className="services-grid">
+            <Link to="/hajj" className="service-card">
+              <div className="service-image hajj-bg"></div>
+              <div className="service-content">
+                <h3>Complete Hajj Packages</h3>
+                <p>Experience a spiritually fulfilling Hajj journey with our comprehensive packages designed for your comfort.</p>
+              </div>
+            </Link>
+            <Link to="/umrah" className="service-card">
+              <div className="service-image umrah-bg"></div>
+              <div className="service-content">
+                <h3>Umrah Services</h3>
+                <p>Embark on your sacred Umrah pilgrimage with our dedicated support and carefully planned arrangements.</p>
+              </div>
+            </Link>
+            <Link to="/ramadan-umrah" className="service-card">
+              <div className="service-image ramadan-bg"></div>
+              <div className="service-content">
+                <h3>Umrah during Ramadan</h3>
+                <p>Make your Ramadan more blessed with our special Umrah packages during the holy month.</p>
+              </div>
+            </Link>
           </div>
-          <div className="service-card">
-            <h3>Umrah Services</h3>
-          </div>
-          <div className="service-card">
-            <h3>Umrah during Ramadan</h3>
-          </div>
+          <Link to="/all-services" className="btn btn-secondary">Explore All Services</Link>
         </div>
-        <Link to="/all-services" className="btn btn-secondary">Explore All Services</Link>
       </section>
-      <section className="featured-packages">
-        <h2>About Us</h2>
-        <div className="packages-grid">
+      <section className="about-us">
+        <div className="about-overlay">
+          <div className="about-content">
+            <h2>About Us</h2>
+            <div className="about-grid">
+              <div className="about-text">
+                <p>Since 2010, Tamanna Hajj has been a trusted name in facilitating sacred journeys to the holy cities of Makkah and Madinah. Our commitment to excellence and spiritual guidance has helped thousands of pilgrims fulfill their religious obligations with peace of mind.</p>
+                <p>We pride ourselves on:</p>
+                <ul>
+                  <li>Experienced and dedicated team of professionals</li>
+                  <li>Personalized care and attention to every pilgrim</li>
+                  <li>Premium accommodation near the holy sites</li>
+                  <li>24/7 support throughout your journey</li>
+                </ul>
+                <Link to="/about" className="btn btn-primary">Learn More About Us</Link>
+              </div>
+              <div className="about-image">
+                {/* Image is set via CSS background */}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -1,67 +1,76 @@
-.gold-page {
-  width: 100%;
-  color: #fff;
+// Variables
+$primary-bg: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.9));
+$secondary-bg: linear-gradient(145deg, rgba(28, 28, 28, 0.95), rgba(40, 40, 40, 0.95));
+$accent-color: #DAA520; // Golden color for Gold package
+$accent-gradient: linear-gradient(45deg, #DAA520, #FFD700);
+$text-primary: #ffffff;
+$text-secondary: #e2e8f0;
+$border-accent: rgba(218, 165, 32, 0.3);
+$card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+// Mixins
+@mixin responsive-font($min-size, $max-size) {
+  font-size: clamp(#{$min-size}rem, calc(#{$min-size}rem + 2vw), #{$max-size}rem);
+}
+
+@mixin responsive-spacing($min-size, $max-size) {
+  padding: clamp(#{$min-size}rem, calc(#{$min-size}rem + 2vw), #{$max-size}rem);
+}
+
+@mixin card-style {
+  background: $secondary-bg;
+  border: 1px solid $border-accent;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  box-shadow: $card-shadow;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $accent-color;
+  }
+}
+
+@mixin section-header {
   text-align: center;
-  font-family: elegantIcons;
-  background-color: #101010; /* Darker background for premium feel */
-  padding-bottom: 0; /* Ensures no extra space at the bottom */
+  color: $text-primary;
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid $border-accent;
+}
 
-  .gold-header {
-    height: 60vh;
+// Main Styles
+.gold-page {
+  & {
     width: 100%;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('../../assets/umrah/16.jpg');
-    background-size: cover;
-    background-attachment: fixed; /* Parallax effect */
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: zoomInOut 20s ease-in-out infinite;
-    margin-bottom: 0; /* Removes margin at the bottom */
-
-
-    @keyframes zoomInOut {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-    }
-
-    h2 {
-      font-size: 3rem; /* Larger font size for better visibility */
-      color: #ffd700; /* Bright golden yellow for luxury */
-      text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
-      opacity: 0;
-      transform: translateY(-20px);
-      animation: fadeInDown 1.5s ease-out forwards;
-
-      @keyframes fadeInDown {
-        0% {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    }
+    color: $text-primary;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    padding-bottom: 0;
   }
 
   .gold-content {
-    padding: 5rem 3rem; /* Increased padding for more breathing space */
-    background-color: #292929; /* Warmer grey for content background */
-    color: #f5f5f5; /* Brighter text color for readability */
-    border-radius: 15px;
-    border: 5px solid #ffd700; /* Gold border for the content area */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    max-width: 1200px;
-    margin: -60px auto 2rem;
-    text-align: left;
-    opacity: 0;
-    animation: fadeInUp 1.5s ease-out 0.5s forwards;
+    & {
+      padding: 5rem 3rem;
+      background: linear-gradient(135deg, #1c1c1c 0%, #2a2a2a 100%);
+      color: #e0e0e0;
+      border-radius: 20px;
+      border: 2px solid rgba(218, 165, 32, 0.1);
+      box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba(218, 165, 32, 0.1);
+      max-width: 1400px;
+      margin: -60px auto 0;
+      position: relative;
+      backdrop-filter: blur(10px);
+      text-align: left;
+      opacity: 0;
+      animation: fadeInUp 1.5s ease-out 0.5s forwards;
+    }
 
     @keyframes fadeInUp {
       0% {
@@ -74,15 +83,330 @@
       }
     }
 
-    .package-details,
+    // Package details section with proper nesting
+    .package-details {
+      & {
+        @include card-style;
+        margin-bottom: 2rem;
+        padding: 3rem;
+        border-radius: 10px;
+        background-color: rgba(28, 28, 28, 0.95);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        animation: fadeInLeft 1s ease-out forwards;
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+
+      @keyframes fadeInLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      h3 {
+        @include section-header;
+        @include responsive-font(2, 3);
+        color: $text-primary;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 2rem;
+
+        th, td {
+          padding: clamp(1rem, 2vw, 1.5rem);
+          border: 1px solid $border-accent;
+          @include responsive-font(0.9, 1.2);
+        }
+
+        th {
+          background: $primary-bg;
+          color: $accent-color;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        td {
+          background: rgba(40, 40, 40, 0.4);
+          color: $text-primary;
+
+          &.includes {
+            color: #5cb85c;
+            svg {
+              color: #5cb85c;
+            }
+          }
+
+          &.excludes {
+            color: #d9534f;
+            svg {
+              color: #d9534f;
+            }
+          }
+
+          svg {
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+
+    // Package pricing section
+    .package-pricing {
+      & {
+        background: $secondary-bg;
+        border: 1px solid $border-accent;
+        border-radius: 20px;
+        padding: 4rem;
+        margin-bottom: 4rem;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        padding: 2rem;
+        background: linear-gradient(145deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.9));
+        border-radius: 15px;
+        border: 1px solid rgba(218, 165, 32, 0.2);
+
+        .section-icon {
+          font-size: 3.5rem;
+          color: $accent-color;
+          margin-bottom: 1rem;
+        }
+
+        h3 {
+          @include responsive-font(2, 3);
+          color: #fff;
+          margin-bottom: clamp(1.5rem, 3vw, 3rem);
+          text-transform: uppercase;
+          letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+          @include responsive-font(1, 1.4);
+          color: #b0c4de;
+          font-style: italic;
+        }
+      }
+
+      .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: clamp(1rem, 3vw, 3rem);
+        margin-bottom: 4rem;
+
+        .price-card {
+          background: linear-gradient(145deg, #2a2a2a, #323232);
+          border-radius: 20px;
+          padding: 3rem;
+          position: relative;
+          transition: all 0.4s ease;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          overflow: hidden;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: $accent-gradient;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+
+          &:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+              0 20px 40px rgba(0, 0, 0, 0.3),
+              0 0 20px rgba(218, 165, 32, 0.1);
+
+            &::before {
+              opacity: 1;
+            }
+          }
+
+          &.featured {
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(218, 165, 32, 0.1);
+
+            .featured-label {
+              position: absolute;
+              top: 20px;
+              right: -35px;
+              background: $accent-gradient;
+              color: #000;
+              padding: 0.5rem 3rem;
+              transform: rotate(45deg);
+              font-size: 0.9rem;
+              font-weight: bold;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+          }
+
+          .card-header {
+            text-align: center;
+            margin-bottom: 2rem;
+
+            .room-icon {
+              font-size: 3rem;
+              color: $accent-color;
+              margin-bottom: 1.5rem;
+            }
+
+            h4 {
+              @include responsive-font(1.5, 2.2);
+              color: #fff;
+              margin-bottom: 1rem;
+              font-weight: 700;
+            }
+
+            .room-subtitle {
+              @include responsive-font(0.9, 1.2);
+              color: #b0c4de;
+              margin-bottom: 1.5rem;
+            }
+
+            .amenities {
+              display: flex;
+              flex-direction: column;
+              gap: 0.8rem;
+              margin-top: 1.5rem;
+
+              span {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                @include responsive-font(0.8, 1.1);
+                color: #e0e0e0;
+
+                svg {
+                  color: $accent-color;
+                }
+              }
+            }
+          }
+
+          .price-details {
+            .price-item {
+              text-align: center;
+              margin: 1.5rem 0;
+              padding: 1rem;
+              border-radius: 10px;
+              background: rgba(0, 0, 0, 0.2);
+
+              .currency {
+                @include responsive-font(1, 1.3);
+                color: #b0c4de;
+                margin-right: 0.5rem;
+              }
+
+              .amount {
+                @include responsive-font(1.8, 2.5);
+                background: $accent-gradient;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-weight: bold;
+              }
+
+              .per-person {
+                display: block;
+                @include responsive-font(0.8, 1);
+                color: #b0c4de;
+                font-style: italic;
+              }
+            }
+          }
+        }
+      }
+
+      .payment-plan {
+        margin-top: 4rem;
+        padding: 3rem;
+        background: linear-gradient(145deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.9));
+        border-radius: 15px;
+        border: 1px solid rgba(218, 165, 32, 0.2);
+
+        h4 {
+          @include responsive-font(1.8, 2.5);
+          text-align: center;
+          color: #fff;
+          margin-bottom: 3rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .payment-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+          gap: clamp(1rem, 2vw, 2rem);
+
+          .payment-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border: 1px solid rgba(218, 165, 32, 0.1);
+
+            .step-number {
+              width: 40px;
+              height: 40px;
+              background: $accent-color;
+              color: #000;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.5rem;
+              font-weight: bold;
+            }
+
+            .step-content {
+              h5 {
+                @include responsive-font(1.2, 1.8);
+                color: $accent-color;
+                margin-bottom: 0.5rem;
+              }
+
+              .amount {
+                @include responsive-font(1, 1.4);
+                color: #fff;
+                margin-bottom: 0.3rem;
+              }
+
+              .date {
+                @include responsive-font(0.8, 1.1);
+                color: #b0c4de;
+                font-style: italic;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Add styles for additional sections
     .exclusive-offers,
     .estimated-plan,
     .bank-account,
     .contact-info {
-      margin-bottom: 4rem;
-      padding: 3rem; /* Increased padding for a more luxurious feel */
+      margin-bottom: 2rem;
+      padding: 3rem;
       border-radius: 10px;
-      background-color: rgba(42, 42, 42, 0.95); /* Warmer dark grey for contrast */
+      background-color: rgba(28, 28, 28, 0.95);
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
       animation: fadeInLeft 1s ease-out forwards;
       transform: translateX(-20px);
@@ -100,13 +424,13 @@
       }
 
       h3 {
-        font-size: 2.5rem; /* Larger font size for section headers */
-        color: #ffd700; /* Bright golden yellow for a luxurious feel */
+        @include responsive-font(1.8, 2.5);
+        color: #ffffff;
         margin-bottom: 2rem;
         text-align: center;
         text-transform: uppercase;
-        font-weight: bold; /* Bolder font weight for emphasis */
-        border-bottom: 4px solid #ffd700; /* Thicker border for emphasis */
+        font-weight: bold;
+        border-bottom: 4px solid $border-accent;
         padding-bottom: 1rem;
         animation: pulse 2s infinite;
 
@@ -125,20 +449,20 @@
 
       table {
         width: 100%;
-        margin-top: 2rem; /* Increased margin for separation */
+        margin-top: 2rem;
         border-collapse: collapse;
-        font-size: 1.6rem; /* Larger font size for table text */
-        line-height: 1.8; /* Increased line height for better readability */
+        font-size: clamp(0.9rem, calc(0.9rem + 1vw), 1.4rem);
+        line-height: 1.8;
 
         th, td {
-          padding: 1.5rem; /* Increased padding for a more spacious feel */
-          border: 1px solid #666; /* Lighter border for better contrast */
+          padding: clamp(0.8rem, 2vw, 1.5rem);
+          border: 1px solid #444;
         }
 
         th {
-          background-color: #454545; /* Warmer grey for table header */
-          color: #ffd700; /* Gold color for headers */
-          font-weight: 700; /* Bolder font weight for headers */
+          background-color: #2e2e2e;
+          color: $accent-color;
+          font-weight: 700;
           text-transform: uppercase;
           transform: scaleY(0);
           animation: growY 0.7s ease-out forwards;
@@ -154,8 +478,8 @@
         }
 
         td {
-          background-color: #555555; /* Warmer grey for table rows */
-          color: #f5f5f5; /* Brighter text color for readability */
+          background-color: #3a3a3a;
+          color: #e0e0e0;
           transform: scaleX(0);
           animation: growX 0.7s ease-out forwards 0.5s;
 
@@ -167,31 +491,314 @@
               transform: scaleX(1);
             }
           }
-        }
 
-        /* Styles for "Includes" and "Excludes" cells */
-        td.includes {
-          color: #5cb85c; /* Green for positive/included items */
-          align-items: center;
-
-          &::before {
+          &.includes {
             color: #5cb85c;
+            svg {
+              color: #5cb85c;
+            }
           }
-        }
 
-        td.excludes {
-          color: #d9534f; /* Red for negative/excluded items */
-          font-weight: bold; /* Emphasize excluded items */
-          display: flex;
-          align-items: center;
-
-          &::before {
+          &.excludes {
             color: #d9534f;
+            svg {
+              color: #d9534f;
+            }
+          }
+
+          svg {
+            margin-right: 0.8rem;
             font-size: 1.2rem;
-            margin-right: 0.5rem;
           }
         }
       }
     }
+
+    // Specific styles for bank account section
+    .bank-account {
+      table {
+        td:first-child {
+          font-weight: bold;
+          color: $accent-color;
+          width: 30%;
+        }
+      }
+    }
+
+    // Specific styles for contact info section
+    .contact-info {
+      table {
+        td:nth-child(odd) {
+          font-weight: bold;
+          color: $accent-color;
+          width: 25%;
+        }
+
+        td:nth-child(even) {
+          width: 25%;
+        }
+      }
+    }
+
+    // Specific styles for estimated plan
+    .estimated-plan {
+      table {
+        th {
+          background: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.9));
+        }
+
+        td:first-child {
+          font-weight: bold;
+          color: $accent-color;
+        }
+      }
+    }
+
+    // Specific styles for exclusive offers
+    .exclusive-offers {
+      table {
+        td:first-child {
+          color: $accent-color;
+          font-weight: bold;
+        }
+
+        td.includes {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  // Gold header specific styles
+  .gold-header {
+    height: 100vh;
+    width: 100%;
+    background-image: 
+      linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url('../../assets/umrah/16.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at center, rgba(218, 165, 32, 0.1) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1400px;
+      padding: 0 2rem;
+      text-align: center;
+      
+      .medal-icon {
+        font-size: 4.5rem;
+        color: $accent-color;
+        margin-bottom: 2rem;
+        filter: drop-shadow(0 0 10px rgba(218, 165, 32, 0.3));
+        animation: float 3s ease-in-out infinite;
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+      }
+
+      h2 {
+        @include responsive-font(2.5, 4.5);
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-family: 'Playfair Display', serif;
+        line-height: 1.2;
+      }
+
+      .rating {
+        margin: 1.5rem 0;
+        
+        svg {
+          color: $accent-color;
+          font-size: 2.2rem;
+          margin: 0 0.4rem;
+          filter: drop-shadow(0 0 5px rgba(218, 165, 32, 0.5));
+          animation: starPulse 2s infinite;
+
+          @keyframes starPulse {
+            0%, 100% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+
+      .header-subtitle {
+        @include responsive-font(1.2, 1.8);
+        color: $text-secondary;
+        margin: 1.5rem auto;
+        max-width: 800px;
+        font-style: italic;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-family: 'Playfair Display', serif;
+        line-height: 1.4;
+      }
+
+      .header-features {
+        display: flex;
+        justify-content: center;
+        gap: clamp(1rem, 3vw, 3rem);
+        margin-top: 3rem;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+
+        span {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          @include responsive-font(0.9, 1.3);
+          padding: 1rem 2rem;
+          background: rgba(0, 0, 0, 0.6);
+          border-radius: 50px;
+          border: 1px solid rgba(218, 165, 32, 0.3);
+          backdrop-filter: blur(5px);
+          transition: all 0.3s ease;
+          
+          &:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 0, 0, 0.7);
+            border-color: $accent-color;
+          }
+          
+          svg {
+            color: $accent-color;
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            filter: drop-shadow(0 0 5px rgba(218, 165, 32, 0.3));
+          }
+        }
+      }
+    }
+  }
+
+  // Add responsive adjustments
+  @media (max-width: 768px) {
+    .gold-header {
+      height: 80vh;
+
+      .header-content {
+        padding: 0 1rem;
+
+        h2 {
+          font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        .header-subtitle {
+          font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+        }
+
+        .header-features {
+          gap: 1rem;
+          
+          span {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    .gold-content {
+      .exclusive-offers,
+      .estimated-plan,
+      .bank-account,
+      .contact-info {
+        padding: 2rem 1rem;
+
+        table {
+          font-size: clamp(0.8rem, calc(0.8rem + 1vw), 1.2rem);
+
+          th, td {
+            padding: 0.8rem;
+          }
+        }
+      }
+
+      .contact-info {
+        table {
+          td {
+            display: block;
+            width: 100% !important;
+            
+            &:nth-child(odd) {
+              background-color: #2e2e2e;
+              border-bottom: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Add consistent styling for all sections
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  // Add consistent card styling
+  .card-style {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(218, 165, 32, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      border-color: $accent-color;
+    }
+  }
+
+  // Add consistent text styling
+  .text-primary {
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .text-secondary {
+    color: #b0c4de;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .text-accent {
+    color: $accent-color;
+    font-family: 'Playfair Display', serif;
   }
 }

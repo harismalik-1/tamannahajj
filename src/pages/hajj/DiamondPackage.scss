@@ -1,67 +1,76 @@
-.diamond-page {
-  width: 100%;
-  color: #fff;
+// Variables
+$primary-bg: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.9));
+$secondary-bg: linear-gradient(145deg, rgba(28, 28, 28, 0.95), rgba(40, 40, 40, 0.95));
+$accent-color: #ffd700;
+$accent-gradient: linear-gradient(45deg, #ffd700, #ffa500);
+$text-primary: #ffffff;
+$text-secondary: #e2e8f0;
+$border-accent: rgba(255, 215, 0, 0.3);
+$card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+// Mixins
+@mixin responsive-font($min-size, $max-size) {
+  font-size: clamp(#{$min-size}rem, calc(#{$min-size}rem + 2vw), #{$max-size}rem);
+}
+
+@mixin responsive-spacing($min-size, $max-size) {
+  padding: clamp(#{$min-size}rem, calc(#{$min-size}rem + 2vw), #{$max-size}rem);
+}
+
+@mixin card-style {
+  background: $secondary-bg;
+  border: 1px solid $border-accent;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  box-shadow: $card-shadow;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $accent-color;
+  }
+}
+
+@mixin section-header {
   text-align: center;
-  font-family: 'Playfair Display', serif; /* Luxurious serif font */
-  background-color: #101010; /* Darker background for premium feel */
-  padding-bottom: 0; /* Ensures no extra space at the bottom */
+  color: $text-primary;
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid $border-accent;
+}
 
-  .diamond-header {
-    height: 60vh;
+// Main Styles
+.diamond-page {
+  & {
     width: 100%;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('../../assets/umrah/15.jpg');
-    background-size: cover;
-    background-attachment: fixed; /* Parallax effect */
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: zoomInOut 20s ease-in-out infinite;
-    margin-bottom: 0; /* Removes margin at the bottom */
-
-    @keyframes zoomInOut {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-    }
-
-    h2 {
-      font-size: 3rem; /* Larger font size for better visibility */
-      color: #b0c4de; /* Light steel blue for a luxurious diamond feel */
-      font-family: 'Georgia', serif;
-      text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
-      opacity: 0;
-      transform: translateY(-20px);
-      animation: fadeInDown 1.5s ease-out forwards;
-
-      @keyframes fadeInDown {
-        0% {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    }
+    color: $text-primary;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    padding-bottom: 0;
   }
 
   .diamond-content {
-    padding: 5rem 3rem; /* Increased padding for more breathing space */
-    background-color: #1c1c1c; /* Slightly lighter dark grey for content */
-    color: #e0e0e0; /* Brighter text color for readability */
-    border-radius: 15px;
-    border: 5px solid #b0c4de; /* Light steel blue border for diamond package */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    max-width: 1200px;
-    margin: -60px auto 0; /* Removes bottom margin to align with footer */
-    text-align: left;
-    opacity: 0;
-    animation: fadeInUp 1.5s ease-out 0.5s forwards;
+    & {
+      padding: 5rem 3rem;
+      background: linear-gradient(135deg, #1c1c1c 0%, #2a2a2a 100%);
+      color: #e0e0e0;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 215, 0, 0.1);
+      box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba(255, 215, 0, 0.1);
+      max-width: 1400px;
+      margin: -60px auto 0;
+      position: relative;
+      backdrop-filter: blur(10px);
+      text-align: left;
+      opacity: 0;
+      animation: fadeInUp 1.5s ease-out 0.5s forwards;
+    }
 
     @keyframes fadeInUp {
       0% {
@@ -74,19 +83,19 @@
       }
     }
 
-    .package-details,
-    .exclusive-offers,
-    .estimated-plan,
-    .bank-account,
-    .contact-info {
-      margin-bottom: 2rem; /* Adjusted for consistency */
-      padding: 3rem; /* Increased padding for a more luxurious feel */
-      border-radius: 10px;
-      background-color: rgba(28, 28, 28, 0.95); /* Darker transparent background for contrast */
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-      animation: fadeInLeft 1s ease-out forwards;
-      transform: translateX(-20px);
-      opacity: 0;
+    // Package details section with proper nesting
+    .package-details {
+      & {
+        @include card-style;
+        margin-bottom: 2rem;
+        padding: 3rem;
+        border-radius: 10px;
+        background-color: rgba(28, 28, 28, 0.95);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        animation: fadeInLeft 1s ease-out forwards;
+        transform: translateX(-20px);
+        opacity: 0;
+      }
 
       @keyframes fadeInLeft {
         0% {
@@ -100,98 +109,820 @@
       }
 
       h3 {
-        font-size: 2.5rem; /* Larger font size for section headers */
-        color: #b0c4de; /* Light steel blue for a luxurious diamond feel */
-        margin-bottom: 2rem;
-        text-align: center;
-        text-transform: uppercase;
-        font-weight: bold; /* Bolder font weight for emphasis */
-        border-bottom: 4px solid #b0c4de; /* Thicker border for emphasis */
-        padding-bottom: 1rem;
-        animation: pulse 2s infinite;
-
-        @keyframes pulse {
-          0% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.05);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
+        @include section-header;
+        @include responsive-font(2, 3);
+        color: $text-primary;
       }
 
       table {
         width: 100%;
-        margin-top: 2rem; /* Increased margin for separation */
         border-collapse: collapse;
-        font-size: 1.4rem; /* Larger font size for table text */
-        line-height: 1.8; /* Increased line height for better readability */
+        margin-top: 2rem;
 
         th, td {
-          padding: 1.5rem; /* Increased padding for a more spacious feel */
-          border: 1px solid #444; /* Lighter border for better contrast */
+          padding: clamp(1rem, 2vw, 1.5rem);
+          border: 1px solid $border-accent;
+          @include responsive-font(0.9, 1.2);
         }
 
         th {
-          background-color: #2e2e2e; /* Dark grey for table header */
-          color: #fff;
-          font-weight: 700; /* Bolder font weight for headers */
+          background: $primary-bg;
+          color: $accent-color;
+          font-weight: 600;
           text-transform: uppercase;
-          transform: scaleY(0);
-          animation: growY 0.7s ease-out forwards;
-
-          @keyframes growY {
-            0% {
-              transform: scaleY(0);
-            }
-            100% {
-              transform: scaleY(1);
-            }
-          }
+          letter-spacing: 1px;
         }
 
         td {
-          background-color: #3a3a3a; /* Slightly lighter grey for table rows */
-          color: #e0e0e0; /* Brighter text color for readability */
-          transform: scaleX(0);
-          animation: growX 0.7s ease-out forwards 0.5s;
+          background: rgba(40, 40, 40, 0.4);
+          color: $text-primary;
 
-          @keyframes growX {
-            0% {
-              transform: scaleX(0);
-            }
-            100% {
-              transform: scaleX(1);
-            }
-          }
-        }
-
-        /* Styles for "Includes" and "Excludes" cells */
-        td.includes {
-          color: #5cb85c; /* Green for positive/included items */
-          align-items: center;
-
-          &::before {
+          &.includes {
             color: #5cb85c;
+            svg {
+              color: #5cb85c;
+            }
           }
-        }
 
-        td.excludes {
-          color: #d9534f; /* Red for negative/excluded items */
-          font-weight: bold; /* Emphasize excluded items */
-          display: flex;
-          align-items: center;
-
-          &::before {
+          &.excludes {
             color: #d9534f;
+            svg {
+              color: #d9534f;
+            }
+          }
+
+          svg {
+            margin-right: 0.8rem;
             font-size: 1.2rem;
-            margin-right: 0.5rem;
           }
         }
       }
     }
+
+    // Package pricing section
+    .package-pricing {
+      & {
+        background: $secondary-bg;
+        border: 1px solid $border-accent;
+        border-radius: 20px;
+        padding: 4rem;
+        margin-bottom: 4rem;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        padding: 2rem;
+        background: linear-gradient(145deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.9));
+        border-radius: 15px;
+        border: 1px solid rgba(255, 215, 0, 0.2);
+
+        .section-icon {
+          font-size: 3.5rem;
+          color: #ffd700;
+          margin-bottom: 1rem;
+        }
+
+        h3 {
+          @include responsive-font(2, 3);
+          color: #fff;
+          margin-bottom: clamp(1.5rem, 3vw, 3rem);
+          text-transform: uppercase;
+          letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+          @include responsive-font(1, 1.4);
+          color: #b0c4de;
+          font-style: italic;
+        }
+      }
+
+      .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: clamp(1rem, 3vw, 3rem);
+        margin-bottom: 4rem;
+
+        .price-card {
+          background: linear-gradient(145deg, #2a2a2a, #323232);
+          border-radius: 20px;
+          padding: 3rem;
+          position: relative;
+          transition: all 0.4s ease;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          overflow: hidden;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ffd700, #ffa500);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+
+          &:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+              0 20px 40px rgba(0, 0, 0, 0.3),
+              0 0 20px rgba(255, 215, 0, 0.1);
+
+            &::before {
+              opacity: 1;
+            }
+          }
+
+          &.featured {
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
+
+            .featured-label {
+              position: absolute;
+              top: 20px;
+              right: -35px;
+              background: linear-gradient(45deg, #ffd700, #ffa500);
+              color: #000;
+              padding: 0.5rem 3rem;
+              transform: rotate(45deg);
+              font-size: 0.9rem;
+              font-weight: bold;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+          }
+
+          .card-header {
+            text-align: center;
+            margin-bottom: 2rem;
+
+            .room-icon {
+              font-size: 3rem;
+              color: #ffd700;
+              margin-bottom: 1.5rem;
+            }
+
+            h4 {
+              @include responsive-font(1.5, 2.2);
+              color: #fff;
+              margin-bottom: 1rem;
+              font-weight: 700;
+            }
+
+            .room-subtitle {
+              @include responsive-font(0.9, 1.2);
+              color: #b0c4de;
+              margin-bottom: 1.5rem;
+            }
+
+            .amenities {
+              display: flex;
+              flex-direction: column;
+              gap: 0.8rem;
+              margin-top: 1.5rem;
+
+              span {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                @include responsive-font(0.8, 1.1);
+                color: #e0e0e0;
+
+                svg {
+                  color: #ffd700;
+                }
+              }
+            }
+          }
+
+          .price-details {
+            .price-item {
+              text-align: center;
+              margin: 1.5rem 0;
+              padding: 1rem;
+              border-radius: 10px;
+              background: rgba(0, 0, 0, 0.2);
+
+              .currency {
+                @include responsive-font(1, 1.3);
+                color: #b0c4de;
+                margin-right: 0.5rem;
+              }
+
+              .amount {
+                @include responsive-font(1.8, 2.5);
+                background: linear-gradient(45deg, #ffd700, #ffa500);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-weight: bold;
+              }
+
+              .per-person {
+                display: block;
+                @include responsive-font(0.8, 1);
+                color: #b0c4de;
+                font-style: italic;
+              }
+            }
+          }
+        }
+      }
+
+      .payment-terms {
+        background: linear-gradient(145deg, #2a2a2a, #323232);
+        border-radius: 15px;
+        padding: 3rem;
+
+        h4 {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+          margin-bottom: 2rem;
+
+          .payment-icon {
+            color: #ffd700;
+          }
+        }
+
+        .payment-timeline {
+          position: relative;
+          padding: 2rem 0;
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #ffd700;
+            top: 0;
+          }
+
+          .timeline-item {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            position: relative;
+
+            .timeline-point {
+              width: 20px;
+              height: 20px;
+              background: #ffd700;
+              border-radius: 50%;
+              margin: 0 2rem;
+              position: relative;
+              z-index: 1;
+            }
+
+            .timeline-content {
+              background: rgba(40, 40, 40, 0.95);
+              padding: 1.5rem;
+              border-radius: 10px;
+              flex: 1;
+
+              h5 {
+                color: #ffd700;
+                margin-bottom: 0.5rem;
+                font-size: 1.4rem;
+              }
+
+              p {
+                color: #fff;
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+              }
+
+              .timeline-date {
+                color: #b0c4de;
+                font-size: 1rem;
+                font-style: italic;
+              }
+            }
+          }
+        }
+      }
+
+      .payment-plan {
+        margin-top: 4rem;
+        padding: 3rem;
+        background: linear-gradient(145deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.9));
+        border-radius: 15px;
+        border: 1px solid rgba(255, 215, 0, 0.2);
+
+        h4 {
+          @include responsive-font(1.8, 2.5);
+          text-align: center;
+          color: #fff;
+          margin-bottom: 3rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .payment-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+          gap: clamp(1rem, 2vw, 2rem);
+
+          .payment-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+
+            .step-number {
+              width: 40px;
+              height: 40px;
+              background: #ffd700;
+              color: #000;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.5rem;
+              font-weight: bold;
+            }
+
+            .step-content {
+              h5 {
+                @include responsive-font(1.2, 1.8);
+                color: #ffd700;
+                margin-bottom: 0.5rem;
+              }
+
+              .amount {
+                @include responsive-font(1, 1.4);
+                color: #fff;
+                margin-bottom: 0.3rem;
+              }
+
+              .date {
+                @include responsive-font(0.8, 1.1);
+                color: #b0c4de;
+                font-style: italic;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Media queries at appropriate level
+    @media (max-width: 768px) {
+      & {
+        margin-top: -30px;
+        border-radius: 15px 15px 0 0;
+      }
+
+      .price-card.featured {
+        transform: scale(1);
+      }
+    }
+  }
+
+  // Responsive styles
+  @media (max-width: 768px) {
+    .diamond-header {
+      height: 80vh;
+    }
+  }
+
+  // Utility classes
+  .text-align {
+    &-center { text-align: center; }
+    &-left { text-align: left; }
+    &-right { text-align: right; }
+  }
+
+  .spacing {
+    &-sm { @include responsive-spacing(0.5, 1); }
+    &-md { @include responsive-spacing(1, 2); }
+    &-lg { @include responsive-spacing(2, 4); }
+  }
+
+  // Nested components
+  & {
+    .diamond-header {
+      height: 100vh;
+      width: 100%;
+      background-image: 
+        linear-gradient(to bottom, 
+          rgba(0, 0, 0, 0.7),
+          rgba(0, 0, 0, 0.5)
+        ),
+        url('../../assets/umrah/15.jpg');
+      background-size: cover;
+      background-attachment: fixed; /* Parallax effect */
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at center, rgba(255,215,0,0.1) 0%, transparent 70%);
+        animation: pulse 4s ease-in-out infinite;
+      }
+
+      .header-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 1400px;
+        padding: 4rem 2rem 0;
+        
+        .crown-icon {
+          font-size: 4rem;
+          color: $accent-color;
+          margin-bottom: 2rem;
+          margin-top: 2rem;
+          filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+          animation: float 3s ease-in-out infinite;
+        }
+
+        h2 {
+          @include responsive-font(2, 4);
+          color: #ffffff;
+          margin-bottom: 1.5rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+          font-family: 'Playfair Display', serif;
+          line-height: 1.2;
+          max-width: 1000px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .rating {
+          margin: 1.5rem 0;
+          
+          svg {
+            color: #ffd700;
+            font-size: 2rem;
+            margin: 0 0.3rem;
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+          }
+        }
+
+        .header-subtitle {
+          @include responsive-font(1, 2);
+          color: #ffffff;
+          margin: 1.5rem 0;
+          font-style: italic;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+          font-family: 'Playfair Display', serif;
+          line-height: 1.4;
+        }
+
+        .header-features {
+          display: flex;
+          justify-content: center;
+          gap: clamp(1rem, 3vw, 3rem);
+          margin-top: 3rem;
+          flex-wrap: wrap;
+          padding: 0 1rem;
+
+          span {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            @include responsive-font(0.9, 1.3);
+            @include responsive-spacing(0.8, 2);
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            
+            &:hover {
+              transform: translateY(-2px);
+              background: rgba(0, 0, 0, 0.7);
+              border-color: #ffd700;
+            }
+            
+            svg {
+              color: #ffd700;
+              font-size: clamp(1.2rem, 2vw, 1.5rem);
+              filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3));
+            }
+          }
+        }
+
+        @media (max-width: 768px) {
+          h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            letter-spacing: 2px;
+          }
+
+          .header-subtitle {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+          }
+        }
+      }
+    }
+
+    .diamond-content {
+      .package-details,
+      .exclusive-offers,
+      .estimated-plan,
+      .bank-account,
+      .contact-info {
+        margin-bottom: 2rem; /* Adjusted for consistency */
+        padding: 3rem; /* Increased padding for a more luxurious feel */
+        border-radius: 10px;
+        background-color: rgba(28, 28, 28, 0.95); /* Darker transparent background for contrast */
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        animation: fadeInLeft 1s ease-out forwards;
+        transform: translateX(-20px);
+        opacity: 0;
+
+        @keyframes fadeInLeft {
+          0% {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        h3 {
+          @include responsive-font(1.8, 2.5);
+          color: #ffffff;
+          margin-bottom: 2rem;
+          text-align: center;
+          text-transform: uppercase;
+          font-weight: bold;
+          border-bottom: 4px solid $border-accent;
+          padding-bottom: 1rem;
+          animation: pulse 2s infinite;
+
+          @keyframes pulse {
+            0% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(1.05);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+        }
+
+        table {
+          width: 100%;
+          margin-top: 2rem; /* Increased margin for separation */
+          border-collapse: collapse;
+          font-size: clamp(0.9rem, calc(0.9rem + 1vw), 1.4rem);
+          line-height: 1.8; /* Increased line height for better readability */
+
+          th, td {
+            padding: clamp(0.8rem, 2vw, 1.5rem);
+            border: 1px solid #444; /* Lighter border for better contrast */
+          }
+
+          th {
+            background-color: #2e2e2e; /* Dark grey for table header */
+            color: #fff;
+            font-weight: 700; /* Bolder font weight for headers */
+            text-transform: uppercase;
+            transform: scaleY(0);
+            animation: growY 0.7s ease-out forwards;
+
+            @keyframes growY {
+              0% {
+                transform: scaleY(0);
+              }
+              100% {
+                transform: scaleY(1);
+              }
+            }
+          }
+
+          td {
+            background-color: #3a3a3a; /* Slightly lighter grey for table rows */
+            color: #e0e0e0; /* Brighter text color for readability */
+            transform: scaleX(0);
+            animation: growX 0.7s ease-out forwards 0.5s;
+
+            @keyframes growX {
+              0% {
+                transform: scaleX(0);
+              }
+              100% {
+                transform: scaleX(1);
+              }
+            }
+          }
+
+          /* Styles for "Includes" and "Excludes" cells */
+          td.includes {
+            color: #5cb85c; /* Green for positive/included items */
+            align-items: center;
+
+            &::before {
+              color: #5cb85c;
+            }
+          }
+
+          td.excludes {
+            color: #d9534f; /* Red for negative/excluded items */
+            font-weight: bold; /* Emphasize excluded items */
+            display: flex;
+            align-items: center;
+
+            &::before {
+              color: #d9534f;
+              font-size: 1.2rem;
+              margin-right: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+
+    // Media queries
+    @media (max-width: 768px) {
+      .diamond-header {
+        height: 80vh;
+
+        .header-content {
+          padding: 0 1rem;
+
+          h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+          }
+
+          .header-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+          }
+
+          .header-features {
+            gap: 1rem;
+            
+            span {
+              padding: 0.8rem 1.5rem;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+
+      .diamond-content {
+        margin-top: -30px;
+        border-radius: 15px 15px 0 0;
+      }
+
+      .price-card {
+        &.featured {
+          transform: scale(1);
+        }
+      }
+
+      .header-features {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .diamond-header {
+        min-height: 80vh;
+      }
+
+      .payment-step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+  }
+
+  // Add consistent styling for all sections
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  // Add consistent card styling
+  .card-style {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      border-color: #ffd700;
+    }
+  }
+
+  // Add consistent text styling
+  .text-primary {
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .text-secondary {
+    color: #b0c4de;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .text-accent {
+    color: #ffd700;
+    font-family: 'Playfair Display', serif;
+  }
+
+  // Add consistent button styling
+  .button-style {
+    background: linear-gradient(45deg, #ffd700, #ffa500);
+    color: #000000;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    }
+  }
+
+  // Add responsive adjustments
+  @media (max-width: 768px) {
+    .diamond-header {
+      height: 80vh;
+
+      .header-content {
+        padding: 0 1rem;
+
+        h2 {
+          font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        .header-subtitle {
+          font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+        }
+
+        .header-features {
+          gap: 1rem;
+          
+          span {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  // Add responsive grid layouts
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(1rem, 3vw, 3rem);
+  }
+
+  .payment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: clamp(1rem, 2vw, 2rem);
+  }
+
+  // Add responsive container widths
+  .container {
+    width: min(90%, 1400px);
+    margin: 0 auto;
+  }
+
+  // Add responsive margins and paddings
+  .section {
+    margin-bottom: clamp(2rem, 5vw, 5rem);
   }
 }

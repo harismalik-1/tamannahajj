@@ -15,6 +15,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover; /* Cover the entire video area */
+      background-color: black;
+      
     }
   }
 
@@ -80,6 +82,9 @@
       border-radius: 10px;
       color: white;
       font-family: elegantIcons;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 6rem;
 
       .counter-item {
         text-align: center;
@@ -102,13 +107,14 @@
     
     .banner-waves {
       position: absolute;
-      bottom: 3rem;
-      left: 0; /* Fixed the left positioning */
+      bottom: 0;
+      left: 0;
       width: 100%;
       overflow: hidden;
       line-height: 0;
-      height: 200px; /* Adjust height if necessary */
-    
+      height: 150px;
+      z-index: 1;
+
       .banner-wave {
         position: absolute;
         width: 100%;
@@ -120,11 +126,11 @@
           height: 100%;
         }
     
-        &:nth-child(2) {
-          top: 50px; /* Adjust position to create overlapping effect */
+        &:nth-child(1) {
+          bottom: 0;
         }
-        &:nth-child(3) {
-          top: 90px; /* Adjust position to create overlapping effect */
+        &:nth-child(2) {
+          bottom: 30px;
         }
     
         .shape-fill {
@@ -140,88 +146,153 @@
   }
 
   .services {
-    margin-top: -50px; /* Slight overlap with banner */
-    padding: 1rem 1rem;
-    height: 95vh; /* Full viewport height */
-    background-color: #f5f5f5; /* Light grey background */
-    text-align: center;
-  
+    position: relative;
+    margin-top: -50px;
+    padding: 6rem 1rem;
+    min-height: 95vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('../../assets/new/14.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    .services-overlay {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4rem 3rem;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
     h1 {
-      font-size: 3rem;
-      color: black;
+      font-size: 3.8rem;
+      color: #f3a712;
       font-family: elegantIcons;
       font-weight: 400;
-      margin-bottom: 2rem;
-      margin-left: 1rem;
+      margin-bottom: 4rem;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
-  
+
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
       padding: 0 1rem;
-  
+      margin-bottom: 3rem;
+
       .service-card {
-        background-size: cover; /* Cover the entire card */
-        background-position: center; /* Center the background image */
-        background-repeat: no-repeat; /* Prevent background repetition */
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 1.5rem;
-        height: 500px; /* Increase card height */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        color: white; /* White text for contrast */
-        font-family: elegantIcons;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
-        font-size: 1.5rem;
-  
-        .service-icon {
-          margin-bottom: 1rem;
-          font-family: elegantIcons;
+        position: relative;
+        height: 600px;
+        border-radius: 20px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+
+        &:hover {
+          transform: translateY(-15px);
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+          .service-image {
+            transform: scale(1.15);
+          }
+
+          .service-content {
+            background: rgba(0, 0, 0, 0.95);
+            height: 50%;
+          }
         }
-  
-        h3 {
-          margin-bottom: 1.5rem;
+
+        .service-image {
+          height: 60%;
+          width: 100%;
+          background-size: cover;
+          background-position: center;
+          transition: transform 0.6s ease;
+        }
+
+        .hajj-bg {
+          background-image: url('../../assets/new/7.jpg');
+        }
+
+        .umrah-bg {
+          background-image: url('../../assets/new/11.jpg');
+        }
+
+        .ramadan-bg {
+          background-image: url('../../assets/highdef/ramadan.jpg');
+        }
+
+        .service-content {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: 2.5rem;
+          background: rgba(0, 0, 0, 0.9);
           color: white;
-          font-family: elegantIcons;
-        }
-  
-        p {
-          margin-bottom: 1rem;
-          font-family: elegantIcons;
-        }
-  
-        .service-info {
-          font-size: 0.9rem;
+          transition: all 0.4s ease;
+          height: 40%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+
+          h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #f3a712;
+            font-family: elegantIcons;
+          }
+
+          p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.95);
+          }
         }
       }
-        .service-card:nth-child(1) {
-        background-image: url( '../../assets/new/7.jpg');
+    }
+
+    .btn-secondary {
+      display: block;
+      width: fit-content;
+      margin: 3rem auto 0;
+      padding: 1.2rem 3rem;
+      background: linear-gradient(135deg, #f3a712, #bf7300);
+      color: white;
+      text-decoration: none;
+      border-radius: 35px;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        background: linear-gradient(135deg, #bf7300, #f3a712);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(243, 167, 18, 0.3);
       }
-  
-      .service-card:nth-child(2) {
-        background-image: url('../../assets/new/11.jpg');
-      }
-  
-      .service-card:nth-child(3) {
-        background-image: url('../../assets/highdef/ramadan.jpg');
+    }
+
+    @media (max-width: 768px) {
+      padding: 2rem 1rem;
+      
+      h1 {
+        font-size: 2.5rem;
       }
 
-    }
-  
-    .btn-secondary {
-      background: linear-gradient(135deg, #f3a712, #665d51);
-      color: #fff;
-      padding: 0.75rem 2.5rem;
-      text-decoration: none;
-      border-radius: 50px; /* Increase border-radius for a circular look */
-      font-size: 1.2rem;
-      align-self: flex-start;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      font-family: elegantIcons;
+      .services-grid {
+        gap: 1.5rem;
+      }
+
+      .service-card {
+        height: 500px;
+      }
     }
   }
 
@@ -261,6 +332,117 @@
 
         p {
           margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+
+  .about-us {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../../assets/new/7.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 6rem 0;
+
+    .about-overlay {
+      background: rgba(0, 0, 0, 0.4);
+      height: 100%;
+      padding: 3rem;
+    }
+
+    .about-content {
+      max-width: 1300px;
+      margin: 0 auto;
+      
+      h2 {
+        font-size: 3.5rem;
+        color: #f3a712;
+        text-align: center;
+        margin-bottom: 4rem;
+        font-family: elegantIcons;
+        font-weight: 400;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 4rem;
+        align-items: center;
+
+        .about-text {
+          color: white;
+          padding: 3rem;
+          background: rgba(0, 0, 0, 0.7);
+          border-radius: 20px;
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+          backdrop-filter: blur(10px);
+
+          p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.95);
+          }
+
+          ul {
+            margin: 2rem 0 3rem;
+            padding-left: 1.5rem;
+
+            li {
+              font-size: 1.2rem;
+              margin-bottom: 1rem;
+              line-height: 1.6;
+              color: rgba(255, 255, 255, 0.9);
+              
+              &:before {
+                content: "•";
+                color: #f3a712;
+                font-weight: bold;
+                display: inline-block;
+                width: 1em;
+                margin-left: -1em;
+              }
+            }
+          }
+
+          .btn-primary {
+            margin-left: 0;
+            background: linear-gradient(135deg, #f3a712, #bf7300);
+            padding: 1.2rem 2.5rem;
+            font-size: 1.2rem;
+            border-radius: 35px;
+            
+            &:hover {
+              background: linear-gradient(135deg, #bf7300, #f3a712);
+              transform: translateY(-3px);
+              box-shadow: 0 8px 25px rgba(243, 167, 18, 0.3);
+            }
+          }
+        }
+
+        .about-image {
+          height: 600px;
+          background: url('../../assets/new/11.jpg') no-repeat center;
+          background-size: cover;
+          border-radius: 20px;
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.02);
+          }
+        }
+
+        @media (max-width: 1024px) {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+
+          .about-image {
+            height: 400px;
+          }
         }
       }
     }

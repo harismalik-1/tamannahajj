@@ -1,118 +1,153 @@
 .footer {
-  background-color: #333;
-  color: white;
-  padding: 2rem 0;
-  text-align: center;
-  width: 100%;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 4rem 0 2rem;
   font-family: 'Arial', sans-serif;
 
-  .footer-top {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #555;
+  .footer-content {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
+  }
 
-    .footer-column {
-      width: 100%;
-      text-align: left;
+  .footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 3rem;
+  }
 
-      .footer-logo {
-        max-width: 200px;
-        margin-bottom: 1rem;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+  .footer-column {
+    h3 {
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 40px;
+        height: 2px;
+        background-color: #d4af37;
       }
+    }
+  }
 
-      .footer-info,
-      .footer-contact {
-        margin-bottom: 1.5rem; /* Space between sections */
-      }
+  .company-info {
+    .footer-logo {
+      max-width: 180px;
+      margin-bottom: 1.5rem;
+    }
 
-      /* New flexbox container to align contact and address horizontally */
-      .footer-contact {
+    .footer-description {
+      color: #cccccc;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+  }
+
+  .contact-info {
+    .contact-details {
+      .contact-item {
         display: flex;
-        justify-content: space-between;
         align-items: flex-start;
+        margin-bottom: 1.2rem;
+        
+        .contact-icon {
+          color: #d4af37;
+          margin-right: 1rem;
+          margin-top: 4px;
+          font-size: 1.2rem;
+        }
 
-        .footer-address {
-          margin-left: 2rem; /* Add space between contact and address */
-          text-align: right; /* Align the address text to the right */
+        p {
+          color: #cccccc;
+          margin: 0;
+          line-height: 1.5;
+          font-size: 0.95rem;
         }
       }
+    }
+  }
 
-      p {
-        margin: 0.5rem 0;
-        line-height: 1.5;
+  .quick-links {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0.8rem;
+
+        a {
+          color: #cccccc;
+          text-decoration: none;
+          transition: color 0.3s ease;
+          font-size: 0.95rem;
+          
+          &:hover {
+            color: #d4af37;
+          }
+        }
       }
     }
   }
 
   .footer-bottom {
-    padding-top: 1rem;
-    font-size: 0.9rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding-top: 2rem;
+    text-align: center;
 
-    .footer-info {
-      flex: 1;
-      min-width: 300px;
+    .social-icons {
+      margin-bottom: 1.5rem;
+
+      a {
+        color: #ffffff;
+        margin: 0 0.8rem;
+        font-size: 1.3rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #d4af37;
+        }
+      }
+    }
+
+    .copyright {
+      color: #999999;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 3rem 0 1.5rem;
+
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-column {
+      text-align: center;
+
+      h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .contact-info .contact-details .contact-item {
+      justify-content: center;
       text-align: left;
     }
 
-    .footer-links {
-      flex: 1;
-      min-width: 300px;
+    .quick-links ul {
       text-align: center;
-
-      a {
-        margin: 0 1rem;
-        color: #fff;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-
-    .social-icons {
-      flex: 1;
-      min-width: 300px;
-      text-align: right;
-
-      a {
-        color: #fff;
-        margin: 0 0.5rem;
-        font-size: 1.5rem;
-
-        &:hover {
-          color: #ddd;
-        }
-      }
-    }
-
-    .back-to-top {
-      margin-top: 1rem;
-      text-align: center;
-      width: 100%;
-
-      a {
-        color: #fff;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
     }
   }
 }
